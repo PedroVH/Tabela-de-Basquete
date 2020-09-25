@@ -1,5 +1,7 @@
 package org.pedrovh;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -16,26 +18,28 @@ public class Controller implements Initializable {
     private TextField placarTextField;
 
     @FXML
-    private TableView<?> tableView;
+    private TableView<Game> tableView;
 
     @FXML
-    private TableColumn<?, ?>jogoColumn;
+    private TableColumn<Game, Integer> jogoColumn;
 
     @FXML
-    private TableColumn<?, ?> placarColumn;
+    private TableColumn<Game, Integer> placarColumn;
 
     @FXML
-    private TableColumn<?, ?> minTempColumn;
+    private TableColumn<Game, Integer> minTempColumn;
 
     @FXML
-    private TableColumn<?, ?> maxTempColumn;
+    private TableColumn<Game, Integer> maxTempColumn;
 
     @FXML
-    private TableColumn<?, ?>recMinColumn;
+    private TableColumn<Game, Integer> recMinColumn;
 
     @FXML
-    private TableColumn<?, ?> recMaxColumn;
+    private TableColumn<Game, Integer> recMaxColumn;
 
+    //
+    ObservableList<Game> gameList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,5 +58,35 @@ public class Controller implements Initializable {
         maxTempColumn.setCellValueFactory(new PropertyValueFactory<>("maxTemp"));
         recMinColumn.setCellValueFactory(new PropertyValueFactory<>("recMin"));
         recMaxColumn.setCellValueFactory(new PropertyValueFactory<>("recMax"));
+
+        tableView.setItems(gameList);
+    }
+
+    public void onAdicionarJogoButtonPushed(){
+        Game lastGame;
+        int numPlacar = Integer.parseInt(placarTextField.getText());
+
+        if (gameList != null && !gameList.isEmpty()) {
+            lastGame = gameList.get(gameList.size()-1);
+        }
+        else {
+            lastGame = new Game();
+        }
+
+        Game newGame = new Game(lastGame, numPlacar);
+        gameList.add(newGame);
+    }
+
+    //removes selected roll
+    public void onRemoverLinhaButtonPushed(){
+        ObservableList<Game> selectedRolls, allGames;
+        allGames = tableView.getItems();
+
+        //gives selected roll
+        selectedRolls = tableView.getSelectionModel().getSelectedItems();
+
+        for(Game game: selectedRolls){
+            allGames.remove(game);
+        }
     }
 }

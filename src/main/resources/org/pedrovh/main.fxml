@@ -26,12 +26,12 @@
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Adicionar Jogo" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" onAction="#onAdicionarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Adicionar Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="11.0" layoutY="253.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
+            <Button layoutX="11.0" layoutY="253.0" mnemonicParsing="false" onAction="#onRemoverLinhaButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
