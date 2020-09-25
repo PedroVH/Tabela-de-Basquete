@@ -1,10 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.VBox?>
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.pedrovh.Controller">
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-   </padding>
-</VBox>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pedrovh.Controller">
+   <children>
+      <Pane prefHeight="450.0" prefWidth="195.0" style="-fx-background-color: #A240FC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="117.0" prefWidth="195.0" style="-fx-background-color: #8D18FF;">
+               <children>
+                  <Label layoutX="51.0" layoutY="14.0" text="Tabela" textFill="WHITE">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="11.0" layoutY="56.0" text="de Basquete" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <TextField fx:id="placarTextField" layoutX="10.0" layoutY="137.0" prefHeight="25.0" prefWidth="174.0" promptText="Placar (número)">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Adicionar Jogo" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="11.0" layoutY="253.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="395.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Salvar Tabela" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <TableView fx:id="tableView" layoutX="205.0" layoutY="14.0" prefHeight="420.0" prefWidth="581.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+        <columns>
+          <TableColumn fx:id="jogoColumn" prefWidth="48.0" text="Jogo" />
+          <TableColumn fx:id="placarColumn" prefWidth="51.0" text="Placar" />
+            <TableColumn fx:id="minTempColumn" prefWidth="156.0" text="Mínimo da Temporada" />
+            <TableColumn fx:id="maxTempColumn" prefWidth="141.0" text="Máximo da Temporada" />
+            <TableColumn fx:id="recMinColumn" prefWidth="94.0" text="Recorde Min." />
+            <TableColumn fx:id="recMaxColumn" editable="false" minWidth="6.0" prefWidth="90.0" text="Recorde Max." />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>
