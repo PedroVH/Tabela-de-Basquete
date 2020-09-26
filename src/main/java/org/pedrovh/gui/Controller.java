@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.pedrovh.app.Game;
 import org.pedrovh.app.SaveFile;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -60,6 +61,12 @@ public class Controller implements Initializable {
         maxTempColumn.setCellValueFactory(new PropertyValueFactory<>("maxTemp"));
         recMinColumn.setCellValueFactory(new PropertyValueFactory<>("recMin"));
         recMaxColumn.setCellValueFactory(new PropertyValueFactory<>("recMax"));
+
+        try {
+            gameList = SaveFile.readSavedRecord();
+        } catch (FileNotFoundException e) {
+            System.out.println("Ainda não tem nenhum save!");
+        }
 
         tableView.setItems(gameList);
     }
