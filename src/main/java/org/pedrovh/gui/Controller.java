@@ -1,4 +1,4 @@
-package org.pedrovh;
+package org.pedrovh.gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,6 +8,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.pedrovh.app.Game;
+import org.pedrovh.app.SaveFile;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -88,5 +90,9 @@ public class Controller implements Initializable {
         for(Game game: selectedRolls){
             allGames.remove(game);
         }
+    }
+    //saves file
+    public void onSalvarButtonPushed(){
+        SaveFile.saveRecord(gameList);
     }
 }

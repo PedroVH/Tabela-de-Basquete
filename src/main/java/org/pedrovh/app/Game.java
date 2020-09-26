@@ -1,4 +1,4 @@
-package org.pedrovh;
+package org.pedrovh.app;
 
 public class Game {
     private Game lastGame;
@@ -13,6 +13,16 @@ public class Game {
         this.lastGame = lastGame;
         this.placar = placar;
         hasLastGame();
+    }
+
+    //used to read saved file
+    public Game(String[] values){
+        this.jogo = Integer.parseInt(values[0]);
+        this.placar = Integer.parseInt(values[1]);
+        this.minTemp = Integer.parseInt(values[2]);
+        this.maxTemp = Integer.parseInt(values[3]);
+        this.recMin = Integer.parseInt(values[4]);
+        this.recMax = Integer.parseInt(values[5]);
     }
 
     public Game() {

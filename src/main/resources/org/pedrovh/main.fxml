@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pedrovh.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pedrovh.gui.Controller">
    <children>
       <Pane prefHeight="450.0" prefWidth="195.0" style="-fx-background-color: #A240FC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -36,7 +36,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="395.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Salvar Tabela" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="395.0" mnemonicParsing="false" onAction="#onSalvarButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Salvar Tabela" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

@@ -15,17 +15,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Scene scene = new Scene(loadFXML());
-        stage.setScene(scene);
+        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        stage.setScene(new Scene(root));
         stage.setTitle("Tabela de Basquete");
         stage.setMinHeight(450);
         stage.setMinWidth(800);
         stage.show();
-    }
-
-    private static Parent loadFXML() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
-        return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
