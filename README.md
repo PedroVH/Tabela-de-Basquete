@@ -3,7 +3,7 @@ Tabela de Basquete
 
 Description
 -----------
-Um software que ajuda jogadores de basquete a organizar seus placares, 
+Um software para ajudar Maria a organizar seus placares de basquete, 
 um desafio prático da proway.com.br. 
 <br/>
 
