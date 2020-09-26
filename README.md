@@ -19,7 +19,7 @@ um desafio prático da proway.com.br.
 Instalação e Execução
 ---------------------
 - **v1.0**
-<br/>
+
 Para executar este software, deve-se fazer download do arquivo .zip
 desta versão, localizado nos "releases" deste repositório.
 Descompacte o arquivo em uma pasta (com programas como WinRar,
