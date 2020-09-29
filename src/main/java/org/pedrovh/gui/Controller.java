@@ -91,7 +91,6 @@ public class Controller implements Initializable {
             gameList.add(newGame);
         }
     }
-
     //altera as informações da linha selecionada e atualiza a tabela
     public void onAlterarJogoButtonPushed(){
         Game selectedGame = tableView.getSelectionModel().getSelectedItem();
@@ -100,16 +99,13 @@ public class Controller implements Initializable {
             int currentIndex = 0;
             int selectedGameIndex = gameList.indexOf(selectedGame);
             Game lastGame = new Game();
-            ObservableList<Game> newList = FXCollections.observableArrayList();
 
             if(selectedGameIndex > 0)
                 lastGame = gameList.get(selectedGameIndex - 1);
 
-            System.out.println(selectedGameIndex);
             gameList.set(selectedGameIndex, new Game(lastGame, numPlacar));
 
             tableView.getSelectionModel().clearSelection();
-
 
             for(Game game : gameList){
                 if(gameList.indexOf(game) <= 0)
@@ -117,9 +113,7 @@ public class Controller implements Initializable {
                 else
                     lastGame = gameList.get(gameList.indexOf(game) - 1);
                 gameList.set(currentIndex++, new Game(lastGame, game.getPlacar()));
-                System.out.println(newList.indexOf(game));
             }
-//            gameList = newList;
         }
         if(selectedGame == null)
             JOptionPane.showMessageDialog(null, "Selecione uma linha primeiro!");

@@ -18,7 +18,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Tabela de Basquete");
-        stage.setMinHeight(450);
+        stage.setMinHeight(460);
         stage.setMinWidth(800);
         stage.show();
     }
