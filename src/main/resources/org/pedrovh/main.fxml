@@ -31,12 +31,17 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="11.0" layoutY="253.0" mnemonicParsing="false" onAction="#onRemoverLinhaButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
+            <Button layoutX="11.0" layoutY="309.0" mnemonicParsing="false" onAction="#onRemoverLinhaButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
             <Button layoutX="10.0" layoutY="395.0" mnemonicParsing="false" onAction="#onSalvarButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Salvar Tabela" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="11.0" layoutY="251.0" mnemonicParsing="false" onAction="#onAlterarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Alterar Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

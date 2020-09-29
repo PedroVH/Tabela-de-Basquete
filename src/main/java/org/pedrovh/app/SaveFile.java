@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.swing.*;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class SaveFile {
@@ -20,7 +23,6 @@ public class SaveFile {
             gameList.forEach(game -> printWriter.println(game.getJogo() + "," + game.getPlacar() + ","
                     + game.getMinTemp() + "," + game.getMaxTemp() + "," + game.getRecMin() + "," + game.getRecMax()));
 
-            //printWriter.println(gameList);
             printWriter.flush();
             printWriter.close();
 
@@ -32,7 +34,7 @@ public class SaveFile {
         }
     }
 
-    public static ObservableList<Game> readSavedRecord() throws FileNotFoundException {
+    public static ObservableList<Game> readSavedRecord() throws Exception {
         ObservableList<Game> gameList = FXCollections.observableArrayList();
 
         Scanner scanner = new Scanner(new File(filepath));

@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.pedrovh.app.Game;
 import org.pedrovh.app.SaveFile;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,7 +42,8 @@ public class Controller implements Initializable {
     @FXML
     private TableColumn<Game, Integer> recMaxColumn;
 
-    //
+    private int numPlacar;
+
     ObservableList<Game> gameList = FXCollections.observableArrayList();
 
     @Override
@@ -54,7 +56,7 @@ public class Controller implements Initializable {
         assert recMinColumn != null : "fx:id=\"recMinColumn\" was not injected: check your FXML file 'sample.fxml'.";
         assert recMaxColumn != null : "fx:id=\"recMaxColumn\" was not injected: check your FXML file 'sample.fxml'.";
 
-        //setup the columns in the table
+        //Inicializa as colunas da tabela
         jogoColumn.setCellValueFactory(new PropertyValueFactory<>("jogo"));
         placarColumn.setCellValueFactory(new PropertyValueFactory<>("placar"));
         minTempColumn.setCellValueFactory(new PropertyValueFactory<>("minTemp"));
@@ -64,8 +66,12 @@ public class Controller implements Initializable {
 
         try {
             gameList = SaveFile.readSavedRecord();
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             System.out.println("Ainda não tem nenhum save!");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "O arquivo \"save.txt\" não pôde ser lido.");
         }
 
         tableView.setItems(gameList);
@@ -73,33 +79,76 @@ public class Controller implements Initializable {
 
     public void onAdicionarJogoButtonPushed(){
         Game lastGame;
-        int numPlacar = Integer.parseInt(placarTextField.getText());
 
-        if (gameList != null && !gameList.isEmpty()) {
-            lastGame = gameList.get(gameList.size()-1);
+        if(validInputPlacar()){
+            if (!gameList.isEmpty()) {
+                lastGame = gameList.get(gameList.size() - 1);
+            }
+            else {
+                lastGame = new Game();
+            }
+            Game newGame = new Game(lastGame, numPlacar);
+            gameList.add(newGame);
         }
-        else {
-            lastGame = new Game();
-        }
-
-        Game newGame = new Game(lastGame, numPlacar);
-        gameList.add(newGame);
     }
 
-    //removes selected roll
+    //altera as informações da linha selecionada e atualiza a tabela
+    public void onAlterarJogoButtonPushed(){
+        Game selectedGame = tableView.getSelectionModel().getSelectedItem();
+
+        if(selectedGame != null && validInputPlacar()){
+            int currentIndex = 0;
+            int selectedGameIndex = gameList.indexOf(selectedGame);
+            Game lastGame = new Game();
+            ObservableList<Game> newList = FXCollections.observableArrayList();
+
+            if(selectedGameIndex > 0)
+                lastGame = gameList.get(selectedGameIndex - 1);
+
+            System.out.println(selectedGameIndex);
+            gameList.set(selectedGameIndex, new Game(lastGame, numPlacar));
+
+            tableView.getSelectionModel().clearSelection();
+
+
+            for(Game game : gameList){
+                if(gameList.indexOf(game) <= 0)
+                    lastGame = new Game();
+                else
+                    lastGame = gameList.get(gameList.indexOf(game) - 1);
+                gameList.set(currentIndex++, new Game(lastGame, game.getPlacar()));
+                System.out.println(newList.indexOf(game));
+            }
+//            gameList = newList;
+        }
+        if(selectedGame == null)
+            JOptionPane.showMessageDialog(null, "Selecione uma linha primeiro!");
+    }
+
+    //remove linha selecionada
     public void onRemoverLinhaButtonPushed(){
-        ObservableList<Game> selectedRolls, allGames;
-        allGames = tableView.getItems();
+        ObservableList<Game> allGames = tableView.getItems();
+        Game selectedGame = tableView.getSelectionModel().getSelectedItem();
 
-        //gives selected roll
-        selectedRolls = tableView.getSelectionModel().getSelectedItems();
-
-        for(Game game: selectedRolls){
-            allGames.remove(game);
-        }
+        allGames.removeAll(selectedGame);
     }
-    //saves file
+
+    //salva a lista
     public void onSalvarButtonPushed(){
         SaveFile.saveRecord(gameList);
+    }
+
+    //checa se o usuário inseriu um número, invés de uma String, e devolve o input do usuário.
+    private boolean validInputPlacar(){
+        try {
+            numPlacar = Integer.parseInt(placarTextField.getText());
+            if(numPlacar < 0 || numPlacar > 1_000)
+                throw new NumberFormatException();
+            return true;
+        }
+        catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Insira um número, entre 0 e 1000!");
+            return false;
+        }
     }
 }

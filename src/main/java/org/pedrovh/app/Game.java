@@ -15,7 +15,7 @@ public class Game {
         hasLastGame();
     }
 
-    //used to read saved file
+    //usado pra ler o save.txt
     public Game(String[] values){
         this.jogo = Integer.parseInt(values[0]);
         this.placar = Integer.parseInt(values[1]);
@@ -42,6 +42,10 @@ public class Game {
 
     private void setJogo(){
         jogo = lastGame.getJogo() + 1;
+    }
+
+    public void setJogo(int jogo){
+        this.jogo = jogo;
     }
 
     public int getJogo(){
