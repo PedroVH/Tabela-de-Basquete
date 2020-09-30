@@ -50,12 +50,12 @@
       </Pane>
       <TableView fx:id="tableView" layoutX="205.0" layoutY="14.0" prefHeight="420.0" prefWidth="581.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
         <columns>
-          <TableColumn fx:id="jogoColumn" prefWidth="48.0" text="Jogo" />
-          <TableColumn fx:id="placarColumn" prefWidth="51.0" text="Placar" />
-            <TableColumn fx:id="minTempColumn" prefWidth="156.0" text="Mínimo da Temporada" />
-            <TableColumn fx:id="maxTempColumn" prefWidth="141.0" text="Máximo da Temporada" />
-            <TableColumn fx:id="recMinColumn" prefWidth="94.0" text="Recorde Min." />
-            <TableColumn fx:id="recMaxColumn" editable="false" minWidth="6.0" prefWidth="90.0" text="Recorde Max." />
+          <TableColumn fx:id="jogoColumn" prefWidth="48.0" sortable="false" text="Jogo" />
+          <TableColumn fx:id="placarColumn" prefWidth="51.0" sortable="false" text="Placar" />
+            <TableColumn fx:id="minTempColumn" prefWidth="156.0" sortable="false" text="Mínimo da Temporada" />
+            <TableColumn fx:id="maxTempColumn" prefWidth="141.0" sortable="false" text="Máximo da Temporada" />
+            <TableColumn fx:id="recMinColumn" prefWidth="94.0" sortable="false" text="Recorde Min." />
+            <TableColumn fx:id="recMaxColumn" editable="false" minWidth="6.0" prefWidth="90.0" sortable="false" text="Recorde Max." />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
