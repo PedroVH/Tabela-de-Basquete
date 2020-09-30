@@ -158,5 +158,8 @@ public class Controller implements Initializable {
         else if(keyEvent.getCode() == KeyCode.BACK_SPACE){
             onRemoverLinhaButtonPushed();
         }
+        //checa se o usuário apertou ctrl + s e salva a tabela
+        else if(keyEvent.getCode() == KeyCode.S && keyEvent.isControlDown())
+            onSalvarButtonPushed();
     }
 }
