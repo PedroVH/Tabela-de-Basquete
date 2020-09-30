@@ -7,41 +7,47 @@
    <children>
       <Pane prefHeight="450.0" prefWidth="195.0" style="-fx-background-color: #A240FC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane prefHeight="117.0" prefWidth="195.0" style="-fx-background-color: #8D18FF;">
+            <Pane prefHeight="117.0" prefWidth="195.0" style="-fx-background-color: #6A0DC4;">
                <children>
-                  <Label layoutX="51.0" layoutY="14.0" text="Tabela" textFill="WHITE">
+                  <Pane layoutY="101.0" prefHeight="16.0" prefWidth="195.0" style="-fx-background-color: #8D18FF;" />
+                  <Label layoutX="41.0" layoutY="8.0" prefHeight="41.0" prefWidth="113.0" text="Tabela" textFill="WHITE">
                      <font>
-                        <Font size="32.0" />
+                        <Font name="Century Gothic" size="32.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="11.0" layoutY="56.0" text="de Basquete" textAlignment="CENTER" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="5.0" layoutY="49.0" text="de Placares" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font size="32.0" />
+                        <Font name="Century Gothic" size="32.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <TextField fx:id="placarTextField" layoutX="10.0" layoutY="137.0" prefHeight="25.0" prefWidth="174.0" promptText="Placar (número)">
+            <Pane layoutX="10.0" layoutY="161.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
+            <TextField fx:id="placarTextField" layoutX="10.0" layoutY="137.0" onKeyPressed="#onKeyPressed" prefHeight="25.0" prefWidth="174.0" promptText="Placar (número)">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
+            <Pane layoutX="10.0" layoutY="221.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
             <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" onAction="#onAdicionarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Adicionar Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
+            <Pane layoutX="10.0" layoutY="279.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
+            <Button layoutX="11.0" layoutY="251.0" mnemonicParsing="false" onAction="#onAlterarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Alterar Jogo" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Pane layoutX="11.0" layoutY="336.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
             <Button layoutX="11.0" layoutY="308.0" mnemonicParsing="false" onAction="#onRemoverLinhaButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
+            <Pane layoutX="11.0" layoutY="394.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
             <Button layoutX="10.0" layoutY="366.0" mnemonicParsing="false" onAction="#onSalvarButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Salvar Tabela" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="11.0" layoutY="251.0" mnemonicParsing="false" onAction="#onAlterarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Alterar Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import org.pedrovh.app.Game;
 import org.pedrovh.app.SaveFile;
 
@@ -143,6 +144,19 @@ public class Controller implements Initializable {
         catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Insira um número, entre 0 e 1000!");
             return false;
+        }
+    }
+
+    //checa se o usuário apertou enter no textField
+    public void onKeyPressed(javafx.scene.input.KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER){
+            if(tableView.getSelectionModel().isEmpty())
+                onAdicionarJogoButtonPushed();
+            else
+                onAlterarJogoButtonPushed();
+        }
+        else if(keyEvent.getCode() == KeyCode.BACK_SPACE){
+            onRemoverLinhaButtonPushed();
         }
     }
 }
