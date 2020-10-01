@@ -29,32 +29,32 @@
                </font>
             </TextField>
             <Pane layoutX="10.0" layoutY="221.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
-            <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" onAction="#onAdicionarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Adicionar Jogo" textFill="WHITE">
+            <Button fx:id="adicionarJogoButton" layoutX="10.0" layoutY="193.0" mnemonicParsing="false" onAction="#onAdicionarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Adicionar Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
             <Pane layoutX="10.0" layoutY="279.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
-            <Button layoutX="11.0" layoutY="251.0" mnemonicParsing="false" onAction="#onAlterarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Alterar Jogo" textFill="WHITE">
+            <Button fx:id="alterarJogoButton" layoutX="11.0" layoutY="251.0" mnemonicParsing="false" onAction="#onAlterarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Alterar Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
             <Pane layoutX="11.0" layoutY="336.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
-            <Button layoutX="11.0" layoutY="308.0" mnemonicParsing="false" onAction="#onRemoverLinhaButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
+            <Button fx:id="removerJogoButton" layoutX="11.0" layoutY="308.0" mnemonicParsing="false" onAction="#onRemoverLinhaButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
             <Pane layoutX="11.0" layoutY="394.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
-            <Button layoutX="10.0" layoutY="366.0" mnemonicParsing="false" onAction="#onSalvarButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Salvar Tabela" textFill="WHITE">
+            <Button fx:id="SalvarTabelaButton" layoutX="10.0" layoutY="366.0" mnemonicParsing="false" onAction="#onSalvarButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Salvar Tabela" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <TableView fx:id="tableView" layoutX="205.0" layoutY="14.0" prefHeight="420.0" prefWidth="581.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <TableView fx:id="tableView" layoutX="205.0" layoutY="14.0" onKeyPressed="#onKeyPressed" prefHeight="420.0" prefWidth="581.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
         <columns>
           <TableColumn fx:id="jogoColumn" prefWidth="48.0" sortable="false" text="Jogo" />
           <TableColumn fx:id="placarColumn" prefWidth="51.0" sortable="false" text="Placar" />

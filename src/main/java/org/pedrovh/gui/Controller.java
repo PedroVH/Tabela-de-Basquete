@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -21,6 +22,18 @@ public class Controller implements Initializable {
 
     @FXML
     private TextField placarTextField;
+
+    @FXML
+    private Button adicionarJogoButton;
+
+    @FXML
+    private Button alterarJogoButton;
+
+    @FXML
+    private Button removerJogoButton;
+
+    @FXML
+    private Button SalvarTabelaButton;
 
     @FXML
     private TableView<Game> tableView;
@@ -64,6 +77,12 @@ public class Controller implements Initializable {
         maxTempColumn.setCellValueFactory(new PropertyValueFactory<>("maxTemp"));
         recMinColumn.setCellValueFactory(new PropertyValueFactory<>("recMin"));
         recMaxColumn.setCellValueFactory(new PropertyValueFactory<>("recMax"));
+
+        //faz os botões não serem focáveis (para quando se apertar tab)
+        adicionarJogoButton.setFocusTraversable(false);
+        alterarJogoButton.setFocusTraversable(false);
+        removerJogoButton.setFocusTraversable(false);
+        SalvarTabelaButton.setFocusTraversable(false);
 
         try {
             gameList = SaveFile.readSavedRecord();
@@ -124,7 +143,6 @@ public class Controller implements Initializable {
     public void onRemoverLinhaButtonPushed(){
         ObservableList<Game> allGames = tableView.getItems();
         Game selectedGame = tableView.getSelectionModel().getSelectedItem();
-
         allGames.removeAll(selectedGame);
     }
 
@@ -137,6 +155,7 @@ public class Controller implements Initializable {
     private boolean validInputPlacar(){
         try {
             numPlacar = Integer.parseInt(placarTextField.getText());
+            placarTextField.clear();
             if(numPlacar < 0 || numPlacar > 1_000)
                 throw new NumberFormatException();
             return true;
@@ -147,7 +166,7 @@ public class Controller implements Initializable {
         }
     }
 
-    //checa se o usuário apertou enter no textField
+    //checa se o input do usuário no textField ou na tableView
     public void onKeyPressed(javafx.scene.input.KeyEvent keyEvent) {
         if(keyEvent.getCode() == KeyCode.ENTER){
             if(tableView.getSelectionModel().isEmpty())
@@ -155,11 +174,13 @@ public class Controller implements Initializable {
             else
                 onAlterarJogoButtonPushed();
         }
-        else if(keyEvent.getCode() == KeyCode.BACK_SPACE){
+        else if(tableView.isFocused() && keyEvent.getCode() == KeyCode.BACK_SPACE)
             onRemoverLinhaButtonPushed();
-        }
         //checa se o usuário apertou ctrl + s e salva a tabela
         else if(keyEvent.getCode() == KeyCode.S && keyEvent.isControlDown())
             onSalvarButtonPushed();
+
+        else if(keyEvent.getCode() == KeyCode.ESCAPE)
+            tableView.getSelectionModel().clearSelection();
     }
 }
