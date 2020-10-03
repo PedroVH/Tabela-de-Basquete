@@ -22,32 +22,26 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="10.0" layoutY="161.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
-            <TextField fx:id="placarTextField" layoutX="10.0" layoutY="137.0" onKeyPressed="#onKeyPressed" prefHeight="25.0" prefWidth="174.0" promptText="Placar (número)">
+            <Pane layoutX="10.0" layoutY="157.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
+            <TextField fx:id="placarTextField" layoutX="10.0" layoutY="133.0" onKeyPressed="#onKeyPressed" prefHeight="25.0" prefWidth="174.0" promptText="Placar (número)">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Pane layoutX="10.0" layoutY="221.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
-            <Button fx:id="adicionarJogoButton" layoutX="10.0" layoutY="193.0" mnemonicParsing="false" onAction="#onAdicionarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Adicionar Jogo" textFill="WHITE">
+            <Pane layoutX="10.0" layoutY="217.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
+            <Button fx:id="adicionarJogoButton" layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onAction="#onAdicionarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Adicionar Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Pane layoutX="10.0" layoutY="279.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
-            <Button fx:id="alterarJogoButton" layoutX="11.0" layoutY="251.0" mnemonicParsing="false" onAction="#onAlterarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Alterar Jogo" textFill="WHITE">
+            <Pane layoutX="10.0" layoutY="275.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
+            <Button fx:id="alterarJogoButton" layoutX="11.0" layoutY="247.0" mnemonicParsing="false" onAction="#onAlterarJogoButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Alterar Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Pane layoutX="11.0" layoutY="336.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
-            <Button fx:id="removerJogoButton" layoutX="11.0" layoutY="308.0" mnemonicParsing="false" onAction="#onRemoverLinhaButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Pane layoutX="11.0" layoutY="394.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
-            <Button fx:id="SalvarTabelaButton" layoutX="10.0" layoutY="366.0" mnemonicParsing="false" onAction="#onSalvarButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Salvar Tabela" textFill="WHITE">
+            <Pane layoutX="10.0" layoutY="383.0" prefHeight="22.0" prefWidth="174.0" style="-fx-background-color: #8D18FF;" />
+            <Button fx:id="removerJogoButton" layoutX="11.0" layoutY="355.0" mnemonicParsing="false" onAction="#onRemoverLinhaButtonPushed" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #B850FF;" text="Remover Jogo" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

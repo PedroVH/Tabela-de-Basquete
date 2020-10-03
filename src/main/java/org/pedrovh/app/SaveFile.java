@@ -25,8 +25,6 @@ public class SaveFile {
 
             printWriter.flush();
             printWriter.close();
-
-            JOptionPane.showMessageDialog(null, "Tabela salva.");
         }
         catch (Exception E)
         {

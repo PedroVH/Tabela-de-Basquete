@@ -44,10 +44,6 @@ public class Game {
         jogo = lastGame.getJogo() + 1;
     }
 
-    public void setJogo(int jogo){
-        this.jogo = jogo;
-    }
-
     public int getJogo(){
         return jogo;
     }

@@ -82,7 +82,6 @@ public class Controller implements Initializable {
         adicionarJogoButton.setFocusTraversable(false);
         alterarJogoButton.setFocusTraversable(false);
         removerJogoButton.setFocusTraversable(false);
-        SalvarTabelaButton.setFocusTraversable(false);
 
         try {
             gameList = SaveFile.readSavedRecord();
@@ -98,19 +97,18 @@ public class Controller implements Initializable {
     }
 
     public void onAdicionarJogoButtonPushed(){
-        Game lastGame;
+        Game lastGame = new Game();
 
         if(validInputPlacar()){
-            if (!gameList.isEmpty()) {
+            if (!gameList.isEmpty())
                 lastGame = gameList.get(gameList.size() - 1);
-            }
-            else {
-                lastGame = new Game();
-            }
+
             Game newGame = new Game(lastGame, numPlacar);
             gameList.add(newGame);
+            SaveFile.saveRecord(gameList);
         }
     }
+
     //altera as informações da linha selecionada e atualiza a tabela
     public void onAlterarJogoButtonPushed(){
         Game selectedGame = tableView.getSelectionModel().getSelectedItem();
@@ -120,6 +118,7 @@ public class Controller implements Initializable {
             int selectedGameIndex = gameList.indexOf(selectedGame);
             Game lastGame = new Game();
 
+            //se não for o primeiro jogo
             if(selectedGameIndex > 0)
                 lastGame = gameList.get(selectedGameIndex - 1);
 
@@ -134,6 +133,7 @@ public class Controller implements Initializable {
                     lastGame = gameList.get(gameList.indexOf(game) - 1);
                 gameList.set(currentIndex++, new Game(lastGame, game.getPlacar()));
             }
+            SaveFile.saveRecord(gameList);
         }
         if(selectedGame == null)
             JOptionPane.showMessageDialog(null, "Selecione uma linha primeiro!");
@@ -144,10 +144,6 @@ public class Controller implements Initializable {
         ObservableList<Game> allGames = tableView.getItems();
         Game selectedGame = tableView.getSelectionModel().getSelectedItem();
         allGames.removeAll(selectedGame);
-    }
-
-    //salva a lista
-    public void onSalvarButtonPushed(){
         SaveFile.saveRecord(gameList);
     }
 
@@ -178,7 +174,7 @@ public class Controller implements Initializable {
             onRemoverLinhaButtonPushed();
         //checa se o usuário apertou ctrl + s e salva a tabela
         else if(keyEvent.getCode() == KeyCode.S && keyEvent.isControlDown())
-            onSalvarButtonPushed();
+            SaveFile.saveRecord(gameList);
 
         else if(keyEvent.getCode() == KeyCode.ESCAPE)
             tableView.getSelectionModel().clearSelection();
