@@ -21,10 +21,14 @@ ou 7-Zip), e dentro da pasta "bin", execute o arquivo "launch.bat".
  
  Mudanças
  --------
+ **v1.2**
+ - Mudanças na arquitetura do programa.
+ 
  **v1.1**
  - É possível modificar um jogo;
  - Possibilidade de utilizar atalhos do teclado, como Enter, Backspace e Ctrl + S;
- - Removida capacidade de organizar a tabela de acordo com a coluna;
+ - Removida capacidade de organizar a tabela em ordem crescente ou decrescente 
+de acordo com a coluna;
 
 
  **v1.0**
