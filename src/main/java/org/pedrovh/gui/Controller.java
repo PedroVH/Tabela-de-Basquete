@@ -10,10 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
-import org.pedrovh.app.Game;
-import org.pedrovh.app.SaveFile;
+import org.pedrovh.app.*;
 
-import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,9 +29,6 @@ public class Controller implements Initializable {
 
     @FXML
     private Button removerJogoButton;
-
-    @FXML
-    private Button SalvarTabelaButton;
 
     @FXML
     private TableView<Game> tableView;
@@ -62,13 +57,13 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'sample.fxml'.";
-        assert jogoColumn != null : "fx:id=\"jogoColumn\" was not injected: check your FXML file 'sample.fxml'.";
-        assert placarColumn != null : "fx:id=\"placarColumn\" was not injected: check your FXML file 'sample.fxml'.";
-        assert minTempColumn != null : "fx:id=\"minTempColumn\" was not injected: check your FXML file 'sample.fxml'.";
-        assert maxTempColumn != null : "fx:id=\"maxTempColumn\" was not injected: check your FXML file 'sample.fxml'.";
-        assert recMinColumn != null : "fx:id=\"recMinColumn\" was not injected: check your FXML file 'sample.fxml'.";
-        assert recMaxColumn != null : "fx:id=\"recMaxColumn\" was not injected: check your FXML file 'sample.fxml'.";
+        assert tableView != null : "fx:id=\"tableView\" não foi injetado: verifique seu arquivo FXML 'main.fxml'.";
+        assert jogoColumn != null : "fx:id=\"jogoColumn\" não foi injetado: verifique seu arquivo FXML 'main.fxml'.";
+        assert placarColumn != null : "fx:id=\"placarColumn\" não foi injetado: verifique seu arquivo FXML 'main.fxml'.";
+        assert minTempColumn != null : "fx:id=\"minTempColumn\" não foi injetado: verifique seu arquivo FXML 'main.fxml'.";
+        assert maxTempColumn != null : "fx:id=\"maxTempColumn\" não foi injetado: verifique seu arquivo FXML 'main.fxml'.";
+        assert recMinColumn != null : "fx:id=\"recMinColumn\" não foi injetado: verifique seu arquivo FXML 'main.fxml'.";
+        assert recMaxColumn != null : "fx:id=\"recMaxColumn\" não foi injetado: verifique seu arquivo FXML 'main.fxml'.";
 
         //Inicializa as colunas da tabela
         jogoColumn.setCellValueFactory(new PropertyValueFactory<>("jogo"));
@@ -78,7 +73,7 @@ public class Controller implements Initializable {
         recMinColumn.setCellValueFactory(new PropertyValueFactory<>("recMin"));
         recMaxColumn.setCellValueFactory(new PropertyValueFactory<>("recMax"));
 
-        //faz os botões não serem focáveis (para quando se apertar tab)
+        //faz os botões não serem mais focáveis (para quando se apertar tab)
         adicionarJogoButton.setFocusTraversable(false);
         alterarJogoButton.setFocusTraversable(false);
         removerJogoButton.setFocusTraversable(false);
@@ -90,21 +85,18 @@ public class Controller implements Initializable {
             System.out.println("Ainda não tem nenhum save!");
         }
         catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "O arquivo \"save.txt\" não pôde ser lido.");
+            JOPMessages.cantReadSaveMessage(SaveFile.filepath);
         }
 
         tableView.setItems(gameList);
     }
 
+    //adiciona um jogo
     public void onAdicionarJogoButtonPushed(){
         Game lastGame = new Game();
 
         if(validInputPlacar()){
-            if (!gameList.isEmpty())
-                lastGame = gameList.get(gameList.size() - 1);
-
-            Game newGame = new Game(lastGame, numPlacar);
-            gameList.add(newGame);
+            AddList.addOnLastGame(gameList, lastGame, numPlacar);
             SaveFile.saveRecord(gameList);
         }
     }
@@ -113,51 +105,32 @@ public class Controller implements Initializable {
     public void onAlterarJogoButtonPushed(){
         Game selectedGame = tableView.getSelectionModel().getSelectedItem();
 
-        if(selectedGame != null && validInputPlacar()){
-            int currentIndex = 0;
-            int selectedGameIndex = gameList.indexOf(selectedGame);
-            Game lastGame = new Game();
+        if(selectedGame != null && validInputPlacar())
+            ChangeGameList.onAlterarJogoButtonPushed(gameList, selectedGame, numPlacar);
 
-            //se não for o primeiro jogo
-            if(selectedGameIndex > 0)
-                lastGame = gameList.get(selectedGameIndex - 1);
-
-            gameList.set(selectedGameIndex, new Game(lastGame, numPlacar));
-
-            tableView.getSelectionModel().clearSelection();
-
-            for(Game game : gameList){
-                if(gameList.indexOf(game) <= 0)
-                    lastGame = new Game();
-                else
-                    lastGame = gameList.get(gameList.indexOf(game) - 1);
-                gameList.set(currentIndex++, new Game(lastGame, game.getPlacar()));
-            }
-            SaveFile.saveRecord(gameList);
-        }
         if(selectedGame == null)
-            JOptionPane.showMessageDialog(null, "Selecione uma linha primeiro!");
+            JOPMessages.nullSelectionMessage();
     }
 
     //remove linha selecionada
     public void onRemoverLinhaButtonPushed(){
         ObservableList<Game> allGames = tableView.getItems();
         Game selectedGame = tableView.getSelectionModel().getSelectedItem();
-        allGames.removeAll(selectedGame);
+
+        RemList.remListTableView(allGames, selectedGame);
         SaveFile.saveRecord(gameList);
     }
 
-    //checa se o usuário inseriu um número, invés de uma String, e devolve o input do usuário.
-    private boolean validInputPlacar(){
+    //checa se o usuário inseriu um número, maior que 0 e menor que 1000
+    public boolean validInputPlacar(){
         try {
             numPlacar = Integer.parseInt(placarTextField.getText());
             placarTextField.clear();
-            if(numPlacar < 0 || numPlacar > 1_000)
-                throw new NumberFormatException();
+            JOPMessages.numberBoundsMessage(numPlacar, 0, 1000);
             return true;
         }
         catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Insira um número, entre 0 e 1000!");
+            JOPMessages.numberFormatMessage();
             return false;
         }
     }

@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class SaveFile {
-    private static final String filepath = "save.txt";
+    public static String filepath = "save.txt";
 
     public static void saveRecord(ObservableList<Game> gameList){
         try

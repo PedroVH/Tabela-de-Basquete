@@ -35,6 +35,13 @@
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -50,12 +57,13 @@
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.3</version>
+
                 <configuration>
                     <mainClass>org.pedrovh.Main</mainClass>
                     <launcher>launch.bat</launcher>
                     <compress>2</compress>
-                    <jlinkZipName>tabela-basquete</jlinkZipName>
-                    <jlinkImageName>tabela-basquete</jlinkImageName>
+                    <jlinkZipName>Tabela de Basquete</jlinkZipName>
+                    <jlinkImageName>Tabela de Basquete</jlinkImageName>
                     <noManPages>true</noManPages>
                     <noHeaderFiles>true</noHeaderFiles>
                 </configuration>
